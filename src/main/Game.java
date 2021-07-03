@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-
 /* Author: Dan Norström
  * This project uses a Deck(.java) of Cards(.java) to play a Game(.java) of BlackJack with x Players(.java) (Sam and a Dealer, usually)
  * 
@@ -9,11 +5,23 @@ import java.util.Iterator;
  * 1. Instantiate deck with overloading (polymorphic?)
  * 2. Instantiate player count
  * 
+ * <Requirement Ambiguity>
+ * 1. "each player is given two cards from the top of a <shuffled> deck of cards."
+ *    - for the requirement of:
+ *    
+ *    "When supplied with the following cardlist:
+ *	  CA, D5, H9, HQ, S8
+ *	  The output should look like:
+ *    sam
+ *	  sam: CA, H9
+ *	  dealer: D5, HQ, S8"
+ *	  
+ *    Conclusion: to always be true, the input using a spesific set of cards cannot be shuffled
  * 
  * <Challanges>
- * 1. final doesn't make objects immutable, using private hinders access from anythin except the class methods
+ * 1. final doesn't make objects immutable in Java, using private hinders access from outside the class,
  *    but the data isnt immutable.
- *    TODO:creating immutability or adding deep cloning to class methods solves this.
+ *    TODO:creating immutability by adding deep cloning to class access methods solves this.
  *    
  * <Junit Tests>
  * 1. new deck with known cards, ensure cards are given correctly
@@ -23,17 +31,16 @@ import java.util.Iterator;
  * 5. game tests
  * 
  * 
- * <Extra implementation>
- * 1. Allow multiple players
- * 	  - if dealer loses, all players below 22 wins.
- *    - 
- * 2. Allow Player, Card and Deck to hold no information about Blackjack
- * 	  So that it can be reused for other card games if we change the game driver.
- * 	  NOTE: some games will require more class methods. We cannot use Boolean flags in Player.
- * 
- * >>. Aces can be 1 and 11
+ * <Self-imposed code regulation>
+ * 1. SOLID (O): Limit Player, Card and Deck to hold no information about Blackjack
+ * 	  MOTIVATION: So that it can be reused for other card games if we change the game driver.
+ * 	  NOTE: some games will require more class methods.
+ * 			avoid boolean flags in players or make abstract player class.
+ * 2. Classes requires no knowledge of each other (Except for Game driver)
 */
+package main;
 
+import java.util.ArrayList;
 
 public class Game {
 	
@@ -44,6 +51,8 @@ public class Game {
 	// no argument constructor
 	public Game(String[] p) {
 		this.doc = new Deck();
+		// shuffle random deck
+		this.doc.shuffle();
 		this.players = new ArrayList<>();
 		for(String s : p) {
 			this.players.add(new Player(s));
@@ -51,7 +60,7 @@ public class Game {
 	}
 	
 	public Game(String[] p, String d) {
-		doc = new Deck(d);
+		this.doc = new Deck(d);
 		this.players = new ArrayList<>();
 		for(String s : p) {
 			this.players.add(new Player(s));
@@ -60,14 +69,7 @@ public class Game {
 	
 	// Game Driver
 	public void start2ManBlackJack() {
-		// prepare the board
-		doc.shuffle();
-	
-		// 2 cards per player
-		for(int i=0; i<2; i++) {
-			for(Player p: players) {
-				p.draw(doc.nextCard());
-		}}
+		// prepare the board		
 		
 		// identify dealer (has seperate rules)
 		Player dealer = null;
@@ -75,6 +77,12 @@ public class Game {
 		for(Player p: players) {
 			if (p.toString() == "Sam") sam = p;
 			if (p.toString() == "Dealer") dealer = p;
+		}
+		
+		// 2 cards per player
+		for(int i=0; i<2; i++) {
+			sam.draw(this.doc.nextCard());
+			dealer.draw(this.doc.nextCard());
 		}
 		
 		//end game logic
@@ -106,7 +114,7 @@ public class Game {
 			// action block
 			else if(sam.sum() < 17) sam.draw(doc.nextCard());
 			
-			else if(dealer.sum() < sam.sum()) dealer.draw(doc.nextCard()); //( (sam.sum() >= 17) && () )
+			else if(dealer.sum() <= sam.sum()) dealer.draw(doc.nextCard()); //( (sam.sum() >= 17) && () )
 			
 			else {
 				conclusion = true;
@@ -115,10 +123,10 @@ public class Game {
 			
 		}
 
-		
+		// game concluded, report winner in line with requirement
 		System.out.println(winner.toString());
 		for(Player p: players) {
-			System.out.println(p.ShowHand());
+			System.out.println(p +": "+p.ShowHand());
 		}
 			
 	}
@@ -151,6 +159,15 @@ public class Game {
 	}
 }
 
+//###################################################################################
+
+/*
+ *  Began working on 2-7 man Blackjack, but the rules for aces
+ *  as well as the win conditions requires a pot and betting system
+ *  to take into account the win ratio if multiple players blackjack.
+ *  - it goes against some of the requirements in the brief, hence
+ *  we keep developing a 2man Blackjack.
+ */
 
 
 //public void startBlackJack() {
@@ -193,9 +210,6 @@ public class Game {
 //		}
 //	}
 //	
-//	
-//	
-//	
 //	// No intitial conclusion:
 //	if (dealer21 || (winner.size() <= 0)) {
 //		
@@ -203,11 +217,7 @@ public class Game {
 //	
 //	// player 22, player loses
 //	// dealer 22, dealer loses
-//	
-//	
 //	// player + dealer 22, dealer wins
-//	
-//	
 //	// players draw if sum less then 17
 //	
 //	

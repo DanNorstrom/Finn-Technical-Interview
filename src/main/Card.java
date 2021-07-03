@@ -1,21 +1,26 @@
+package main;
 
 public class Card {
 	
 	private String name;
 	private int value;
 
-	public Card(String s) throws Exception{
+	public Card(String s){
 		this.name = s;
-
-		String val = s.substring(1, s.length());
+		
+		String val = s.substring(1, s.length());		
+			
 		try{
+			// acertain correct input format
+			if ( !s.matches("[CSHD]{1}(10|[0-9JQKA]{1})")) throw new Exception();
+			// allocate value
 			if (val.matches("[JQK]")) this.value = 10;
 			else if (val.matches("[A]")) this.value = 11;
 			else this.value = Integer.parseInt( s.substring(1, s.length()) );
 		}
 		catch(Exception e) {
-			// ensure exception is thrown up the stack (to deck usually)
-			System.out.println("Could not create card with ID: "+s);
+			//System.out.println("Could not create card with ID: "+s);
+			throw new IllegalArgumentException("Could not create card with ID: "+s);
 		}
 	}
 	
