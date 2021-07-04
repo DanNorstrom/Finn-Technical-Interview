@@ -32,8 +32,7 @@ class TestDeck {
 	@Test
 	void testCardTotalValue() {
 		
-		//acertain the total point value is retained.
-		
+		//ascertain the total point value is retained.
 		boolean concluded = false;
 		int sum = 0;
 		while(!concluded) {

@@ -45,7 +45,7 @@ public class Player {
 			for(Card c: this.hand){
 				sum += c+", ";
 			}
-			// remove last seperators
+			// remove last separators
 			return sum.substring(0, sum.length()-2);
 		}
 	}

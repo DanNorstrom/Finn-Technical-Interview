@@ -42,7 +42,7 @@ class TestGame {
 		public Player start2ManBlackJack_stub() {
 			// prepare the board		
 			
-			// identify dealer (has seperate rules)
+			// identify dealer (has separate rules)
 			Player dealer = null;
 			Player sam = null;
 			for(Player p: players) {
@@ -103,7 +103,7 @@ class TestGame {
 	@Test
 	void testStart2ManBlackJack() {
 		
-		// stub init
+		// stub initialize
 		String[] p = {"FinnTester","Dealer"};
 		
 		Game_stub g_DBJ = new Game_stub(p, "test-dealer-blackjack.txt");

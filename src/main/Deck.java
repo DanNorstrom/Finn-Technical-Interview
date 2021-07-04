@@ -37,18 +37,24 @@ public class Deck {
 		try {
 			sc = new Scanner(new File(path));
 		}
-		catch(Exception e) {
-			// if not absolute, try local (helpful if used without a IDE Path)
-			try{
-				sc = new Scanner( new File(System.getProperty("user.dir")+ "\\res\\" + path) );
+		catch(Exception e1) {
+			try {
+				// same folder too
+				sc = new Scanner(new File(System.getProperty("user.dir") + path));
 			}
-			catch(Exception ee) {
-				//System.out.println(System.getProperty("user.dir"));
-				System.out.println("Deck could not be created because no such file exists\n");
+			catch(Exception e2) {
+				// if not absolute, try local (helpful if used without a IDE Path)
+				try{
+					sc = new Scanner( new File(System.getProperty("user.dir")+ "\\res\\" + path) );
+				}
+				catch(Exception e3) {
+					//System.out.println(System.getProperty("user.dir"));
+					System.out.println("Deck could not be created because no such file exists\n");
+				}
 			}
 		}
 		
-		// add delimiter pattern to seperate tokens in sc stream
+		// add delimiter pattern to separate tokens in sc stream
 		sc.useDelimiter(",\\s");
 
 		// build the deck of cards

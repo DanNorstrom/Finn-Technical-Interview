@@ -12,19 +12,6 @@ import main.Card;
 class TestCard {
 	
 
-//	@BeforeAll
-//	static void setUpBeforeClass() throws Exception {
-//		Card d = new Card()
-//	}
-//
-//	@BeforeEach
-//	void setUp() throws Exception {
-//	}
-//
-//	@AfterEach
-//	void tearDown() throws Exception {
-//	}
-
 	@Test
 	void testCard1() {
 		// card should be invalid

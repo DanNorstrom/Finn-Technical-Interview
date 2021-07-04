@@ -11,7 +11,7 @@ public class Card {
 		String val = s.substring(1, s.length());		
 			
 		try{
-			// acertain correct input format
+			// ascertain correct input format
 			if ( !s.matches("[CSHD]{1}(10|[0-9JQKA]{1})")) throw new Exception();
 			// allocate value
 			if (val.matches("[JQK]")) this.value = 10;

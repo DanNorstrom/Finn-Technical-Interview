@@ -100,6 +100,12 @@ public class Game {
 				winner = sam;
 			}
 			
+			// dealer blackjack, sam doesn't (equal outcome if both blackjack)
+			else if ( dealer.sum() == 21 ) {
+				conclusion = true;
+				winner = dealer;
+			}
+			
 			// sam goes bust, dealer wins (equal outcome if both go bust)
 			else if ( sam.sum() >= 22 )  {
 				conclusion = true;
@@ -152,7 +158,7 @@ public class Game {
 				break;
 				
 		// invalid inputs
-		default: System.out.println("Requires exaclty one file path or empty input");
+		default: System.out.println("Requires exactly one file path or empty input");
 				 System.exit(1);
 		}
 		
@@ -211,7 +217,7 @@ public class Game {
 //		}
 //	}
 //	
-//	// No intitial conclusion:
+//	// No initial conclusion:
 //	if (dealer21 || (winner.size() <= 0)) {
 //		
 //	}
