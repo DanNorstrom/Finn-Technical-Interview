@@ -7,7 +7,7 @@ java -jar BeatTheDealer.jar <test.txt>*
 ## Details
 
 1. There are some edgecase test .txt files located in /res <br>
-2. Tests and source files are in differet Java packages.
+2. Tests and source files are in different Java packages.
 
 ## Requirements
 
