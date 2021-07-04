@@ -4,7 +4,7 @@
 2. Run the production BeatTheDealer.jar located in /prod using: <br><br>
 java -jar BeatTheDealer.jar <test.txt>*<br>
 <br>
-the application expects its argument file reference to exist in the same folder, or to be an absolute path
+The application expects its argument file reference to exist in the same folder, or to be an absolute path
 
 ## Details
 
