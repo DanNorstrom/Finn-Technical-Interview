@@ -4,11 +4,11 @@
 2. Run the production BeatTheDealer.jar located in /prod using: <br><br>
 java -jar BeatTheDealer.jar <test.txt>*<br>
 <br>
-The application expects its argument file reference to exist in the same folder, or to be an absolute path
+The application expects its argument file reference to exist in the same folder, or to be an absolute path.
 
 ## Details
 
-1. There are some edgecase test .txt files located in /res <br>
+1. There are some edgecase test .txt files located in /res. <br>
 2. Tests and source files are in different Java packages.
 
 ## Requirements
