@@ -2,7 +2,9 @@
 
 1. Run from an IDE with a build path set to the project.<br>
 2. Run the production BeatTheDealer.jar located in /prod using: <br><br>
-java -jar BeatTheDealer.jar <test.txt>*
+java -jar BeatTheDealer.jar <test.txt>*<br>
+<br>
+the application expects its argument file reference to exist in the same folder, or to be an absolute path
 
 ## Details
 
