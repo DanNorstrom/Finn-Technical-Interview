@@ -4,7 +4,7 @@
 2. Run the production BeatTheDealer.jar located in /prod using: <br><br>
 java -jar BeatTheDealer.jar <test.txt>*
 
-# Requirements
+## Requirements
 
 1. Junit5 (available at https://junit.org/junit5/)<br>
 2. Java v8 or newer (this project is built on IDE: Eclipse, JRE: JavaSE-1.8)<br>
