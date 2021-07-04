@@ -43,7 +43,7 @@ public class Deck {
 				sc = new Scanner( new File(System.getProperty("user.dir")+ "\\res\\" + path) );
 			}
 			catch(Exception ee) {
-				System.out.println(System.getProperty("user.dir"));
+				//System.out.println(System.getProperty("user.dir"));
 				System.out.println("Deck could not be created because no such file exists\n");
 			}
 		}

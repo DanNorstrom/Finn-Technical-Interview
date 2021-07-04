@@ -51,8 +51,8 @@ public class Game {
 	// no argument constructor
 	public Game(String[] p) {
 		this.doc = new Deck();
-		// shuffle random deck
 		this.doc.shuffle();
+		
 		this.players = new ArrayList<>();
 		for(String s : p) {
 			this.players.add(new Player(s));
@@ -61,6 +61,7 @@ public class Game {
 	
 	public Game(String[] p, String d) {
 		this.doc = new Deck(d);
+		
 		this.players = new ArrayList<>();
 		for(String s : p) {
 			this.players.add(new Player(s));
@@ -71,7 +72,7 @@ public class Game {
 	public void start2ManBlackJack() {
 		// prepare the board		
 		
-		// identify dealer (has seperate rules)
+		// identify players
 		Player dealer = null;
 		Player sam = null;
 		for(Player p: players) {

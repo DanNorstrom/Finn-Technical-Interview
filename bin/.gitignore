@@ -1,10 +1,6 @@
-/TestCard.class
-/main/
-/test/
-/main2/
+/requirement-example.txt
+/test-dealer-blackjack.txt
+/test-dealer-bust.txt
+/test-player-blackjack.txt
+/test-player-bust.txt
 /test.txt
-/Card.class
-/Deck.class
-/Game.class
-/Player.class
-/res/
