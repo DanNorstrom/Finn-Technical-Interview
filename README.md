@@ -3,10 +3,9 @@
 1. Run from an IDE with a build path set to the project.<br>
 2. Run the production BeatTheDealer.jar located in /prod using: <br><br>
 Same folder: java -jar BeatTheDealer.jar <test.txt>* <br>
-Absolute path: java -jar BeatTHeDealer.jar < C:\Users\User\<insert-path>\test.txt >* <br>
 <br>
-The application expects its argument file reference to exist in the same folder, or to be an absolute path.
-
+The application expects its argument file reference to exist in the same folder, or to be an absolute path. <br><br>
+Absolute path: java -jar BeatTHeDealer.jar < C:\Users\User\<insert-path>\test.txt >* <br>
 ## Details
 
 1. There are some edgecase test .txt files located in /res. <br>
